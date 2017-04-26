@@ -1,0 +1,39 @@
+E:\Bishnu Chaudhary\LMS\Entities\bin\Debug\Entities.dll.config
+E:\Bishnu Chaudhary\LMS\Entities\bin\Debug\Entities.dll
+E:\Bishnu Chaudhary\LMS\Entities\bin\Debug\Entities.pdb
+E:\Bishnu Chaudhary\LMS\Entities\bin\Debug\EntityFramework.dll
+E:\Bishnu Chaudhary\LMS\Entities\bin\Debug\EntityFramework.SqlServer.dll
+E:\Bishnu Chaudhary\LMS\Entities\bin\Debug\EntityFramework.xml
+E:\Bishnu Chaudhary\LMS\Entities\bin\Debug\EntityFramework.SqlServer.xml
+E:\Bishnu Chaudhary\LMS\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
+E:\Bishnu Chaudhary\LMS\Entities\obj\Debug\Entities.dll
+E:\Bishnu Chaudhary\LMS\Entities\obj\Debug\Entities.pdb
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\bin\Debug\Entities.dll.config
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\bin\Debug\Entities.dll
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\bin\Debug\Entities.pdb
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\bin\Debug\EntityFramework.dll
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\bin\Debug\EntityFramework.SqlServer.dll
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\bin\Debug\EntityFramework.xml
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\bin\Debug\EntityFramework.SqlServer.xml
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\obj\Debug\Entities.dll
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\obj\Debug\Entities.pdb
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Entities\bin\Debug\Entities.dll.config
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Entities\bin\Debug\Entities.dll
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Entities\bin\Debug\Entities.pdb
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Entities\bin\Debug\EntityFramework.dll
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Entities\bin\Debug\EntityFramework.SqlServer.dll
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Entities\bin\Debug\EntityFramework.xml
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Entities\bin\Debug\EntityFramework.SqlServer.xml
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Entities\obj\Debug\Entities.dll
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Entities\obj\Debug\Entities.pdb
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\bin\Debug\Entities.dll.config
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\bin\Debug\Entities.dll
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\bin\Debug\Entities.pdb
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\bin\Debug\EntityFramework.dll
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\bin\Debug\EntityFramework.xml
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\obj\Debug\Entities.dll
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\obj\Debug\Entities.pdb
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache

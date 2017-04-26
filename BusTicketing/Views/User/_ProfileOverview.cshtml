@@ -1,0 +1,27 @@
+﻿@model BusTicketing.Models.UserViewModel
+
+
+    <h4 class="m-t-0 header-title"><b>Personal Information</b></h4>
+    <div class="p-20">
+        <div class="about-info-p">
+            <strong>Full Name</strong>
+            <br>
+            <p class="text-muted">@Model.First_name @Model.Last_name</p>
+        </div>
+        <div class="about-info-p">
+            <strong>DOB</strong>
+            <br>
+            <p class="text-muted">@Model.DOB.Value.ToString("MM/dd/yyyy")</p>
+        </div>
+        <div class="about-info-p">
+            <strong>Address</strong>
+            <br>
+            <p class="text-muted">@Model.Address</p>
+        </div>
+        <div class="about-info-p m-b-0">
+            <strong>Contact</strong>
+            <br>
+            <p class="text-muted">@Model.Contact</p>
+        </div>
+    </div>
+

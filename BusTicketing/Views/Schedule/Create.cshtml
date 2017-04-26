@@ -1,0 +1,73 @@
+﻿@model BusTicketing.Models.ScheduleViewModel
+@{
+    ViewBag.Title = "Schedule Bus";
+}
+
+<link href="~/Content/jq-themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/CustomJavascripts/Common.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Schedule Bus</h2>
+    </div>
+</div>
+
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Create", "Schedule", FormMethod.Post, new { id = "frmcreate", enctype = "multipart/form-data" }))
+            {
+                <section class="panel">
+                    <div class="panel-body">
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <fieldset>
+                            <legend>Schedule</legend>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Bus_Id)
+                                    @Html.DropDownListFor(m => m.Bus_Id, Model.BusList, "Select..", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Bus_Id, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Date)
+                                    @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Route_Id)
+                                    @Html.DropDownListFor(m => m.Route_Id, Model.RouteList, "Select..", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Route_Id, "", new { @class = "text-danger" })
+                                </div>
+                               
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.DepartureTime)
+                                    @Html.TextBoxFor(m => m.DepartureTime, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.DepartureTime, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <footer class="panel-footer">
+                        <button id="btnCreate" type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Schedule</button>
+                    </footer>
+                </section>
+
+            }
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $('#Date').datepicker({
+            dateFormat: 'mm/dd/yy'
+        });
+    });
+</script>

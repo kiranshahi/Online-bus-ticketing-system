@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="author" content="Coderthemes">
+
+    <link rel="shortcut icon" href="assets/images/favicon_1.ico">
+
+    <title>@ViewBag.Title - Bus Ticketing</title>
+
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="~/Scripts/plugins/morris/morris.css">
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/sweet-alert.css" rel="stylesheet" />
+    <link type="text/css" href="~/Content/css/bootstrap-editable.css" rel="stylesheet">
+
+    @Styles.Render("~/toastr/css")
+    <script src="~/Scripts/js/modernizr.min.js"></script>
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/sweet-alert.min.js"></script>
+    @Scripts.Render("~/bundles/toastr")
+</head>
+
+
+<body>
+    <!-- Begin page --!>
+        <!-- Top Bar Start -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img alt="Bus Ticketing" src="~/Content/Images/bus.png">
+            </a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Bus Ticketing</a>
+        </div>
+        
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @if (!Request.IsAuthenticated)
+                {
+                    <li><a href="@Url.Action("Register","Account")">Register</a></li>
+                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#custom-width-modal">Sign in</a></li>
+                }
+                else
+                {
+                    <li>
+                        <a><i class="fa fa-user"></i>@Filters.AuthenticationModel.GlobalUser.getGlobalUser().Username</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("MyBooking", "Book")">My Booking</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("LogOffUser", "Account")"> Sign Out</a>
+                    </li>
+                }
+            </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    
+    <!-- Content Section-->
+    <div class="container">
+    @RenderBody()
+    </div> <!-- content -->
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footerleft ">
+                    <div class="logofooter"> Contact</div>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+                    <p><i class="fa fa-map-pin"></i> 210, Putalisadak, Dhobidhara, Kathmandu -        44600, Nepal</p>
+                    <p><i class="fa fa-phone"></i> Phone (Nepal) : +977 9800 000 000</p>
+                    <p><i class="fa fa-envelope"></i> E-mail : example@yourdomain.com</p>
+
+                </div>
+                <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">GENERAL LINKS</h6>
+                    <ul class="footer-ul">
+                        <li><a href="#"> Career</a></li>
+                        <li><a href="#"> Privacy Policy</a></li>
+                        <li><a href="#"> Terms & Conditions</a></li>
+                        <li><a href="#"> Client Gateway</a></li>
+                        <li><a href="#"> Ranking</a></li>
+                        <li><a href="#"> Case Studies</a></li>
+                        <li><a href="#"> Frequently Ask Questions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">LATEST POST</h6>
+                    <div class="post">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia id dui sed posuere. <span>April 8,2017</span></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia id dui sed posuere. <span>April 8,2017</span></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia id dui sed posuere. <span>April 8,2017</span></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                    <div class="fb-page" data-href="https://www.facebook.com" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                        <div class="fb-xfbml-parse-ignore">
+                            <blockquote cite="https://www.facebook.com/"><a href="https://www.facebook.com/">Facebook</a></blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--footer start from here-->
+    <div class="copyright">
+        <div class="container">
+            <div class="col-md-6">
+                <p>© 2016 - All Rights with Bus Ticketing</p>
+            </div>
+            <div class="col-md-6">
+                <ul class="bottom_ul">
+                    <li><a href="#">Bus Ticketing</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Faq's</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Site Map</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--Popup Model for sign in-->
+    <div id="custom-width-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" style="width:30%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="custom-width-modalLabel">Sign Into <strong class="text-custom">Bus Ticketing</strong></h4>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("LoginUser", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal m-t-20", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input id="UserName" type="text" class="form-control" placeholder="Username" value="" name="UserName" data-val-required="The UserName field is required." data-val="true">
+                                <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="UserName"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input id="Password" type="password" class="form-control" placeholder="Password" value="" name="Password" data-val-required="The Password field is required." data-val="true">
+                                <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="Password"></span>
+                            </div>
+                        </div>
+                        <div class="form-group text-center m-t-40">
+                            <div class="col-xs-12">
+                                <button class="btn btn-default btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- END wrapper -->
+    @*<Success or Failure Messages>*@
+    <input id="hdn-successMsg" type="hidden" value="@TempData["Success"]" />
+    <input id="hdn-isSuccessMsg" type="hidden" value="@TempData["isSuccess"]" />
+    @*<Success or Failure Messages>*@
+
+    <script src="~/Scripts/CustomJavascripts/Layout.js"></script>
+    <script>
+        var resizefunc = [];
+    </script>
+
+    <!-- jQuery  -->
+    <script src="~/Scripts/js/detect.js"></script>
+    <script src="~/Scripts/js/fastclick.js"></script>
+    <script src="~/Scripts/js/jquery.slimscroll.js"></script>
+    <script src="~/Scripts/js/jquery.blockUI.js"></script>
+    <script src="~/Scripts/js/waves.js"></script>
+    <script src="~/Scripts/js/wow.min.js"></script>
+    <script src="~/Scripts/js/jquery.nicescroll.js"></script>
+    <script src="~/Scripts/js/jquery.scrollTo.min.js"></script>
+
+    <script src="~/Scripts/plugins/peity/jquery.peity.min.js"></script>
+
+    <!-- jQuery  -->
+    <script src="~/Scripts/plugins/waypoints/lib/jquery.waypoints.js"></script>
+    <script src="~/Scripts/plugins/counterup/jquery.counterup.min.js"></script>
+
+
+
+    <script src="~/Scripts/plugins/morris/morris.min.js"></script>
+    <script src="~/Scripts/plugins/raphael/raphael-min.js"></script>
+
+    <script src="~/Scripts/plugins/jquery-knob/jquery.knob.js"></script>
+
+    <script src="~/Scripts/pages/jquery.dashboard.js"></script>
+
+    <script src="~/Scripts/js/jquery.core.js"></script>
+    <script src="~/Scripts/js/jquery.app.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/bootstrap-editable.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/jquery.xeditable.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('.counter').counterUp({
+                delay: 100,
+                time: 1200
+            });
+
+            $(".knob").knob();
+        });
+    </script>
+</body>
+</html>

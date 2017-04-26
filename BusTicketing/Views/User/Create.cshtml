@@ -1,0 +1,120 @@
+﻿@model BusTicketing.Models.UserViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<link href="~/Content/jq-themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/CustomJavascripts/Common.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="row">
+    <div class="col-sm-12">       
+        <h2>Create User</h2>
+    </div>
+</div>
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Create", "User", FormMethod.Post, new { id = "frmcreate", enctype = "multipart/form-data" }))
+            {
+                <section class="panel">                   
+                    <div class="panel-body">
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="col-sm-6 col-md-6">
+                            <fieldset>
+                                <legend>General Information</legend>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.First_name)
+                                    @Html.TextBoxFor(m => m.First_name, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.First_name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Last_name)
+                                    @Html.TextBoxFor(m => m.Last_name, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Last_name, "", new { @class = "text-danger" })
+                                </div>                               
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.DOB)
+                                    @Html.TextBoxFor(m => m.DOB, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+                                </div>  
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.UserRole)
+                                    @Html.DropDownListFor(m => m.UserRole, Model.UserRoleList, "Select..", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UserRole, "", new { @class = "text-danger" })
+                                </div>                                
+                            </fieldset>
+                            <fieldset>
+                                <legend>Contact Information</legend>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Address)
+                                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Contact)
+                                    @Html.TextBoxFor(m => m.Contact, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Contact, "", new { @class = "text-danger" })
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <fieldset>
+                                <legend>Login Information</legend>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Username)
+                                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password)
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.ConfirmPassword)
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </fieldset>
+                            
+                            <fieldset>
+                                <legend>Profile Image</legend>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.ProfileImageUpload, new { @Type = "file", @accept = "image/gif, image/jpeg,image/png" })
+                                    @Html.ValidationMessageFor(m => m.ProfileImageUpload, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <img id="imgProfileImage" style="height:100px;width:100px;" src="@Url.Action("GetUserImage", "User", new { id = 0 })" />
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                    <footer class="panel-footer">
+                        <button id="btnCreate" type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</button>
+                    </footer>
+                </section>
+
+            }
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $("#ProfileImageUpload").change(function () {
+            readURL(this, $('#imgProfileImage'));
+        });
+        $('#DOB').datepicker({
+            dateFormat: 'mm/dd/yy'
+        });
+    });
+</script>
+
+
+

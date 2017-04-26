@@ -1,0 +1,88 @@
+﻿@model BusTicketing.Models.BusViewModel
+@{
+    ViewBag.Title = "Bus";
+}
+
+<link href="~/Content/jq-themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/CustomJavascripts/Common.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Register Bus</h2>
+    </div>
+</div>
+
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Create", "Bus", FormMethod.Post, new { id = "frmcreate", enctype = "multipart/form-data" }))
+            {
+                <section class="panel">
+                    <div class="panel-body">
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <fieldset>
+                            <legend>Bus Information</legend>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Bus_No)
+                                    @Html.TextBoxFor(m => m.Bus_No, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Bus_No, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.NoOfSeats)
+                                    @Html.TextBoxFor(m => m.NoOfSeats, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.NoOfSeats, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Travel)
+                                    @Html.DropDownListFor(m => m.Travel, Model.TravelList, "Select..", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Travel, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Facilities)
+                                    @Html.TextAreaFor(m => m.Facilities, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Facilities, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Bus Image</legend>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.BusImageUpload, new { @Type = "file", @accept = "image/gif, image/jpeg,image/png" })
+                                    @Html.ValidationMessageFor(m => m.BusImageUpload, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <img id="imgBusImage" style="height:100px;width:100px;" src="@Url.Action("GetBusImage", "Bus", new { id = 0 })" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <footer class="panel-footer">
+                        <button id="btnCreate" type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Register</button>
+                    </footer>
+                </section>
+
+            }
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function (e) {
+        $("#BusImageUpload").change(function () {
+            readURL(this, $('#imgBusImage'));
+        });
+    });
+</script>
+
+
+

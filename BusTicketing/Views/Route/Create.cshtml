@@ -1,0 +1,69 @@
+﻿@model BusTicketing.Models.RouteViewModel
+@{
+    ViewBag.Title = "Route";
+}
+
+<link href="~/Content/jq-themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/CustomJavascripts/Common.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Create Route</h2>
+    </div>
+</div>
+
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Create", "Route", FormMethod.Post, new { id = "frmcreate", enctype = "multipart/form-data" }))
+            {
+                <section class="panel">                   
+                    <div class="panel-body">
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="col-sm-6 col-md-6">
+                            <fieldset>
+                                <legend>Route Information</legend>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Departure)
+                                    @Html.TextBoxFor(m => m.Departure, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Departure, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Arrival)
+                                    @Html.TextBoxFor(m => m.Arrival, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Arrival, "", new { @class = "text-danger" })
+                                </div>  
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Through)
+                                    @Html.TextAreaFor(m => m.Through, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Through, "", new { @class = "text-danger" })
+                                </div>   
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Fair)
+                                    @Html.TextBoxFor(m => m.Fair, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Fair, "", new { @class = "text-danger" })
+                                </div>  
+                            </fieldset>
+                        </div>
+                        
+
+                    </div>
+                    <footer class="panel-footer">
+                        <button id="btnCreate" type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</button>
+                    </footer>
+                </section>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+

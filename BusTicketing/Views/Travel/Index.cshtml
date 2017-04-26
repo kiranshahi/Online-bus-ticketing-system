@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Entities.Models.Travel>
+@{
+    ViewBag.Title = "Travel Agency List";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="btn-group pull-right m-t-15">
+            <a href="@Url.Action("Create","Travel")" class="btn btn-default waves-effect waves-light" id="target" title="Create"><i class="fa fa-plus"></i> Add Travel Agency</a>
+        </div>
+        <h2>Travel Agency</h2>
+    </div>
+</div>
+<link href="~/Scripts/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="">
+                    <table id="datatable" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Travel Name</th>
+                                <th>Travel Details</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var travel in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @travel.Travel_Name
+                                    </td>
+                                    <td>@travel.Travel_Detail</td>
+
+
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Travel", new { id = travel.Id })" c class="edit-row" title="Edit"><i class="fa fa-pencil"></i></a>
+                                        <a href="@Url.Action("Delete", "Travel", new { id = travel.Id })" c class="delete-row" title="Delete"><i class="fa fa-remove"></i></a>
+
+                                       
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#datatable').dataTable();
+    });
+</script>
