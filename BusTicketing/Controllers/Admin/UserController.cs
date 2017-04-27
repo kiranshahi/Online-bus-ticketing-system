@@ -17,7 +17,6 @@ using System.Web.Mvc;
 
 namespace BusTicketing.Controllers
 {
-    [BusTicketingAuthorize("1", "2")]
     public class UserController : Controller
     {
         private IRepositoryFactory _repository;
@@ -61,6 +60,7 @@ namespace BusTicketing.Controllers
             return File(filepath, "image/jpg/gif/png");
 
         }
+
         [BusTicketingAuthorize("1")]
         public ActionResult Delete(int id)
         {
@@ -94,6 +94,7 @@ namespace BusTicketing.Controllers
                                           }).Where(c => c.Value != "1").ToList();
             return View(userViewModel);
         }
+
         [BusTicketingAuthorize("1")]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -145,6 +146,7 @@ namespace BusTicketing.Controllers
             }
             return View(userViewModel);
         }
+
         [BusTicketingAuthorize("1")]
         public ActionResult Edit(int id)
         {
@@ -159,6 +161,7 @@ namespace BusTicketing.Controllers
                                           }).Where(c => c.Value != "1").ToList();
             return View(userViewModel);
         }
+
         [BusTicketingAuthorize("1")]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -218,6 +221,7 @@ namespace BusTicketing.Controllers
             return View(userViewModel);
         }
 
+        [BusTicketingAuthorize("1", "2", "3")]
         public ActionResult UserProfile()
         {
             var userid = Filters.AuthenticationModel.GlobalUser.getGlobalUser().Id;
@@ -226,16 +230,20 @@ namespace BusTicketing.Controllers
             return View(vmUser);
         }
 
-        public ActionResult ProfileOverview(int id)
+        [BusTicketingAuthorize("1", "2", "3")]
+        public ActionResult ProfileOverview()
         {
-            var user = _repository.Get<User>().Where(c => c.User_Id == id).FirstOrDefault();
+            var userId = GlobalUser.getGlobalUser().Id;
+            var user = _repository.Get<User>().Where(c => c.User_Id == userId).FirstOrDefault();
             var vmUser = _mapper.Map<UserViewModel>(user);
             return PartialView("_ProfileOverview", vmUser);
         }
 
-        public ActionResult ProfileEdit(int id)
+        [BusTicketingAuthorize("1", "2", "3")]
+        public ActionResult ProfileEdit()
         {
-            var user = _repository.Get<User>().Where(c => c.User_Id == id).FirstOrDefault();
+            var userId = GlobalUser.getGlobalUser().Id;
+            var user = _repository.Get<User>().Where(c => c.User_Id == userId).FirstOrDefault();
             var vmUser = _mapper.Map<UserProfileViewModel>(user);
             return PartialView("_ProfileEdit", vmUser);
         }
@@ -290,10 +298,12 @@ namespace BusTicketing.Controllers
             return Json(JsonStr, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ChangePassword(int id)
+        [BusTicketingAuthorize("1", "2", "3")]
+        public ActionResult ChangePassword()
         {
+            var userId = GlobalUser.getGlobalUser().Id;
             var changePassword = new ChangePasswordViewModel();
-            changePassword.Id = id;
+            changePassword.Id = userId;
             return PartialView("_ChangePassword", changePassword);
         }
 

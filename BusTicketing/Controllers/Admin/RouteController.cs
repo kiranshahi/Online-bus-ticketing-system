@@ -23,6 +23,7 @@ namespace BusTicketing.Controllers
     {
         private IRepositoryFactory _repository;
         private IMapper _mapper;
+        private int userId = GlobalUser.getGlobalUser().Id;
         public RouteController(IRepositoryFactory repository, IMapper mapper)
         {
             _repository = repository;
@@ -32,24 +33,42 @@ namespace BusTicketing.Controllers
         // GET: /User/        
         public ActionResult Index()
         {
-            var routeList = _repository.Get<Route>().ToList();
-            var vmbusList = (from b in routeList
-                              select new RouteViewModel
-                              {
-                                  Id = b.Id,
-                                  Arrival = b.Arrival,
-                                  Departure = b.Departure,
-                                  Through = b.Through,
-                                  Fair = b.Fair
-                              }).ToList();
-            return View(vmbusList);
+            var userRole = GlobalUser.getGlobalUser().UserType;
+            if (userRole == 1)
+            {
+                var routeList = _repository.Get<Route>().ToList();
+                var vmbusList = (from b in routeList
+                                 select new RouteViewModel
+                                 {
+                                     Id = b.Id,
+                                     Arrival = b.Arrival,
+                                     Departure = b.Departure,
+                                     Through = b.Through,
+                                     Fair = b.Fair
+                                 }).ToList();
+                return View(vmbusList);
+            }
+            else
+            {
+                var routeList = _repository.Get<Route>().Where(c => c.UserId == userId).ToList();
+                var vmbusList = (from b in routeList
+                                 select new RouteViewModel
+                                 {
+                                     Id = b.Id,
+                                     Arrival = b.Arrival,
+                                     Departure = b.Departure,
+                                     Through = b.Through,
+                                     Fair = b.Fair
+                                 }).ToList();
+                return View(vmbusList);
+            }
         }       
       
         public ActionResult Delete(int id)
         {
             try
             {
-                var route = _repository.Get<Route>().Where(c => c.Id == id).FirstOrDefault();
+                var route = _repository.Get<Route>().Where(c => c.Id == id && c.UserId == userId).FirstOrDefault();
                 _repository.Delete<Route>(route);
                 _repository.SaveChanges();
                 TempData["Success"] = "Route deleted successfully!!";

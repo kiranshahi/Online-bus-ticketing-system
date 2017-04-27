@@ -6,6 +6,7 @@ namespace Entities.Models
     public partial class Route
     {
         public int Id { get; set; }
+        public int UserId { get; set; }
         public string Departure { get; set; }
         public string Arrival { get; set; }
         public string Through { get; set; }

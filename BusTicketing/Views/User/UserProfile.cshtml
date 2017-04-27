@@ -1,6 +1,14 @@
 ﻿@model BusTicketing.Models.UserViewModel
 @{
     ViewBag.Title = "Profile";
+    if ((Common.GlobalMethods.Enumerators.UserRole)Filters.AuthenticationModel.GlobalUser.getGlobalUser().UserType == Common.GlobalMethods.Enumerators.UserRole.User)
+    {
+        Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
 <link href="~/Content/jq-themes/base/jquery-ui.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-ui-1.12.1.js"></script>

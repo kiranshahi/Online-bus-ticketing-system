@@ -96,10 +96,7 @@
                         <li class="has_sub">
                             <a href="#" class="waves-effect"><i class="ti-settings"></i><span> Setup </span></a>
                             <ul class="list-unstyled">
-                                @if ((Common.GlobalMethods.Enumerators.UserRole)Filters.AuthenticationModel.GlobalUser.getGlobalUser().UserType == Common.GlobalMethods.Enumerators.UserRole.Admin) 
-                                {
-                                    <li><a href="@Url.Action("Index","Travel")"> Travel </a></li>
-                                }
+                                <li><a href="@Url.Action("Index","Travel")"> Travel </a></li>
                                 <li><a href="@Url.Action("Index","Bus")"> Bus </a></li>
                                 <li><a href="@Url.Action("Index","Route")"> Route </a></li>
                             </ul>

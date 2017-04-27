@@ -65,7 +65,7 @@
                 else
                 {
                     <li>
-                        <a><i class="fa fa-user"></i>@Filters.AuthenticationModel.GlobalUser.getGlobalUser().Username</a>
+                        <a href="@Url.Action("UserProfile", "User")"><i class="fa fa-user"></i>@Filters.AuthenticationModel.GlobalUser.getGlobalUser().Username</a>
                     </li>
                     <li>
                         <a href="@Url.Action("MyBooking", "Book")">My Booking</a>
