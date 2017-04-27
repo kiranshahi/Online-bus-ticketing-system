@@ -9,6 +9,7 @@ namespace BusTicketing.Models
     public class BusViewModel
     {
         public int Id { get; set; }
+        public int UserId { get; set; }
         [Required]
         [Display(Name = "Bus No.")]
         public string Bus_No { get; set; }

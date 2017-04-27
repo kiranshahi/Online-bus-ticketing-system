@@ -30,6 +30,7 @@ namespace Entities.Models.Mapping
             this.Property(t => t.Travel).HasColumnName("Travel");
             this.Property(t => t.Facilities).HasColumnName("Facilities");
             this.Property(t => t.BusImage).HasColumnName("BusImage");
+            this.Property(t => t.UserId).HasColumnName("UserId");
         }
     }
 }

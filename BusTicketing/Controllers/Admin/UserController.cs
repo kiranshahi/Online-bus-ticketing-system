@@ -313,7 +313,7 @@ namespace BusTicketing.Controllers
                     _repository.Update<User>(user);
                     _repository.SaveChanges();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     message = "Failed to change password!!";
                     isSuccess = false;

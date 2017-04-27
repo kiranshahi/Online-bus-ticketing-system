@@ -10,7 +10,7 @@ namespace BusTicketing.Controllers
     {
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated && ((Common.GlobalMethods.Enumerators.UserRole)Filters.AuthenticationModel.GlobalUser.getGlobalUser().UserType == Common.GlobalMethods.Enumerators.UserRole.Admin || (Common.GlobalMethods.Enumerators.UserRole)Filters.AuthenticationModel.GlobalUser.getGlobalUser().UserType == Common.GlobalMethods.Enumerators.UserRole.TravelAgency))
+            if (User.Identity.IsAuthenticated && ((Common.GlobalMethods.Enumerators.UserRole)Filters.AuthenticationModel.GlobalUser.getGlobalUser().UserType == Common.GlobalMethods.Enumerators.UserRole.Admin || (Common.GlobalMethods.Enumerators.UserRole)Filters.AuthenticationModel.GlobalUser.getGlobalUser().UserType == Common.GlobalMethods.Enumerators.UserRole.BusOwner))
             {
                 return RedirectToAction("Index", "Dashboard");
             }

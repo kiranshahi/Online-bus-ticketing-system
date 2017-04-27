@@ -32,17 +32,36 @@ namespace BusTicketing.Controllers
         // GET: /User/        
         public ActionResult Index()
         {
-            var busList = _repository.Get<Bus>().ToList();
-            var vmbusList = (from b in busList
-                              select new BusViewModel
-                              {
-                                  Id = b.Id,
-                                  Bus_No = b.Bus_No,
-                                  NoOfSeats = b.NoOfSeats,
-                                  TravelName = this.GetTravelName(b.Id),
-                                  Facilities= b.Facilities
-                              }).ToList();
-            return View(vmbusList);
+            var userId = GlobalUser.getGlobalUser().Id;
+            var userRole = GlobalUser.getGlobalUser().UserType;
+            if (userRole == 1)
+            {
+                var busList = _repository.Get<Bus>().ToList();
+                var vmbusList = (from b in busList
+                                 select new BusViewModel
+                                 {
+                                     Id = b.Id,
+                                     Bus_No = b.Bus_No,
+                                     NoOfSeats = b.NoOfSeats,
+                                     TravelName = this.GetTravelName(b.Travel),
+                                     Facilities= b.Facilities
+                                 }).ToList();
+                return View(vmbusList);
+            }
+            else
+            {
+                var busList = _repository.Get<Bus>().Where(c => c.UserId == userId).ToList();
+                var vmbusList = (from b in busList
+                                 select new BusViewModel
+                                 {
+                                     Id = b.Id,
+                                     Bus_No = b.Bus_No,
+                                     NoOfSeats = b.NoOfSeats,
+                                     TravelName = this.GetTravelName(b.Travel),
+                                     Facilities = b.Facilities
+                                 }).ToList();
+                return View(vmbusList);
+            }
         }
 
         public ActionResult GetBusImage(int id = 0)
@@ -129,7 +148,8 @@ namespace BusTicketing.Controllers
             {
                 var bus = _mapper.Map<Bus>(busViewModel);
                 try
-                {                    
+                {
+                    bus.UserId = GlobalUser.getGlobalUser().Id;
                     _repository.Insert<Bus>(bus);
                     _repository.SaveChanges();
 

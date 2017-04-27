@@ -11,5 +11,6 @@ namespace Entities.Models
         public int Travel { get; set; }
         public string Facilities { get; set; }
         public string BusImage { get; set; }
+        public int UserId { get; set; }
     }
 }
