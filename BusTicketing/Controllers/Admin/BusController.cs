@@ -23,6 +23,8 @@ namespace BusTicketing.Controllers
     {
         private IRepositoryFactory _repository;
         private IMapper _mapper;
+        private int userId = GlobalUser.getGlobalUser().Id;
+        private int userRole = GlobalUser.getGlobalUser().UserType;
         public BusController(IRepositoryFactory repository, IMapper mapper)
         {
             _repository = repository;
@@ -32,8 +34,6 @@ namespace BusTicketing.Controllers
         // GET: /User/        
         public ActionResult Index()
         {
-            var userId = GlobalUser.getGlobalUser().Id;
-            var userRole = GlobalUser.getGlobalUser().UserType;
             if (userRole == 1)
             {
                 var busList = _repository.Get<Bus>().ToList();
@@ -124,14 +124,28 @@ namespace BusTicketing.Controllers
 
         public ActionResult Create()
         {
-            BusViewModel busViewModel = new BusViewModel();
-            busViewModel.TravelList = (from p in _repository.Get<Travel>()
+            if (userRole == 1)
+            {
+                BusViewModel busViewModel = new BusViewModel();
+                busViewModel.TravelList = (from p in _repository.Get<Travel>()
                                            select new SelectListItem
                                            {
                                                Value = p.Id.ToString(),
                                                Text = p.Travel_Name
                                            }).ToList();
-            return View(busViewModel);
+                return View(busViewModel);
+            }
+            else
+            {
+                BusViewModel busViewModel = new BusViewModel();
+                busViewModel.TravelList = (from p in _repository.Get<Travel>().Where(c => c.UserId == userId)
+                                           select new SelectListItem
+                                           {
+                                               Value = p.Id.ToString(),
+                                               Text = p.Travel_Name
+                                           }).ToList();
+                return View(busViewModel);
+            }
         }
 
         [ValidateAntiForgeryToken]

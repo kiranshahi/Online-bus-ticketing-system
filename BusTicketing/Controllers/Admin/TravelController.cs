@@ -22,6 +22,7 @@ namespace BusTicketing.Controllers
     {
         private IRepositoryFactory _repository;
         private IMapper _mapper;
+        private int userId = GlobalUser.getGlobalUser().Id;
         public TravelController(IRepositoryFactory repository, IMapper mapper)
         {
             _repository = repository;
@@ -31,8 +32,17 @@ namespace BusTicketing.Controllers
         // GET: /User/        
         public ActionResult Index()
         {
-            var travelList = _repository.Get<Travel>();
-            return View(travelList);
+            var userRole = GlobalUser.getGlobalUser().UserType;
+            if (userRole == 1)
+            {
+                var travelList = _repository.Get<Travel>();
+                return View(travelList);
+            }
+            else
+            {
+                var travelList = _repository.Get<Travel>().Where(c => c.UserId == userId);
+                return View(travelList);
+            }
         }
        
         public ActionResult Delete(int id)
@@ -93,7 +103,7 @@ namespace BusTicketing.Controllers
        
         public ActionResult Edit(int id)
         {
-            var travel = _repository.Get<Travel>().Where(c => c.Id == id).FirstOrDefault();
+            var travel = _repository.Get<Travel>().Where(c => c.Id == id && c.UserId == userId).FirstOrDefault();
             var travelViewModel = _mapper.Map<TravelViewModel>(travel);
             return View(travelViewModel);
         }

@@ -20,15 +20,15 @@
         top: 20px !important;
     }
 </style>
-<div class="row">
-    <div class="col-md-12">
-        <!-- START carousel-->
-        @{
-            Html.RenderAction("LoadSlider", "LoadPartial");
-        }
-        <!-- END carousel-->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START carousel-->
+            @{
+                Html.RenderAction("LoadSlider", "LoadPartial");
+            }
+            <!-- END carousel-->
+        </div>
     </div>
-</div>
 <div class="row">
     <div class="col-sm-12">
         @using (Html.BeginForm("SearchBus", "Search", FormMethod.Post, new { id = "frmcreate", enctype = "multipart/form-data", @class = "form-inline" }))
@@ -71,43 +71,43 @@
     </div>
 
 </div>
+<div class="container-fluid">
+    <div class="row">
 
-<div class="row">
+        <div class="text-center"><h2>We promise to deliver</h2></div>
 
-    <div class="text-center"><h2>We promise to deliver</h2></div>
-
-    <div class="col-xs-12 col-md-4">
-        <div class="thumbnail">
-            <img src="~/Content/Images/maximum_choices.png" alt="MAXIMUM CHOICE" />
-            <div class="caption text-center">
-                <h3>MAXIMUM CHOICE</h3>
-                <p>We give you the widest number of travel options across thousands of routes. </p>
+        <div class="col-xs-12 col-md-4">
+            <div class="thumbnail">
+                <img src="~/Content/Images/maximum_choices.png" alt="MAXIMUM CHOICE" />
+                <div class="caption text-center">
+                    <h3>MAXIMUM CHOICE</h3>
+                    <p>We give you the widest number of travel options across thousands of routes. </p>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="col-xs-12 col-md-4">
-        <div class="thumbnail">
-            <img src="~/Content/Images/benefits.png" alt="SUPERIOR CUSTOMER SERVICE" />
-            <div class="caption text-center">
-                <h3>SUPERIOR CUSTOMER SERVICE</h3>
-                <p> We put our experience and relationships to good use and are available to solve your travel issues. </p>
+
+        <div class="col-xs-12 col-md-4">
+            <div class="thumbnail">
+                <img src="~/Content/Images/benefits.png" alt="SUPERIOR CUSTOMER SERVICE" />
+                <div class="caption text-center">
+                    <h3>SUPERIOR CUSTOMER SERVICE</h3>
+                    <p> We put our experience and relationships to good use and are available to solve your travel issues. </p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-xs-12 col-md-4">
-        <div class="thumbnail">
-            <img src="~/Content/Images/lowest_Fare.png" alt="LOWEST PRICES" />
-            <div class="caption text-center">
-                <h3>LOWEST PRICES</h3>
-                <p> We always give you the lowest price with the best partner offers. </p>
+        <div class="col-xs-12 col-md-4">
+            <div class="thumbnail">
+                <img src="~/Content/Images/lowest_Fare.png" alt="LOWEST PRICES" />
+                <div class="caption text-center">
+                    <h3>LOWEST PRICES</h3>
+                    <p> We always give you the lowest price with the best partner offers. </p>
+                </div>
             </div>
         </div>
-    </div>
 
+    </div>
 </div>
-
 
 <script type="text/javascript">
     var date = new Date();

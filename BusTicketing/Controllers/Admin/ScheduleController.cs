@@ -23,6 +23,8 @@ namespace BusTicketing.Controllers
     {
         private IRepositoryFactory _repository;
         private IMapper _mapper;
+        private int currentUserId = GlobalUser.getGlobalUser().Id;
+        private int userRole = GlobalUser.getGlobalUser().UserType;
         public ScheduleController(IRepositoryFactory repository, IMapper mapper)
         {
             _repository = repository;
@@ -32,17 +34,36 @@ namespace BusTicketing.Controllers
         // GET: /User/        
         public ActionResult Index()
         {
-            var busList = _repository.Get<Schedule>().ToList();
-            var vmbusList = (from b in busList
-                              select new ScheduleViewModel
-                              {
-                                  Id = b.Id,
-                                  BusName = this.GetBusNumber(b.Bus_Id),
-                                  Route = this.GetRoute(b.Route_Id),
-                                  DepartureTime = b.DepartureTime,
-                                  Date= b.Date
-                              }).ToList();
-            return View(vmbusList);
+            if (userRole == 1)
+            {
+                var busList = _repository.Get<Schedule>().ToList();
+                var vmbusList = (from b in busList
+                                 select new ScheduleViewModel
+                                 {
+                                     Id = b.Id,
+                                     BusName = this.GetBusNumber(b.Bus_Id),
+                                     Route = this.GetRoute(b.Route_Id),
+                                     DepartureTime = b.DepartureTime,
+                                     Date = b.Date
+                                 }).ToList();
+                return View(vmbusList);
+            }
+            else
+            {
+                var busList = _repository.Get<Schedule>().ToList();
+                var vmbusList = (from b in busList
+                                 join bs in _repository.GetNT<Bus>().ToList() on b.Bus_Id equals bs.Id
+                                 where bs.UserId == currentUserId
+                                 select new ScheduleViewModel
+                                 {
+                                     Id = b.Id,
+                                     BusName = this.GetBusNumber(b.Bus_Id),
+                                     Route = this.GetRoute(b.Route_Id),
+                                     DepartureTime = b.DepartureTime,
+                                     Date = b.Date
+                                 }).ToList();
+                return View(vmbusList);
+            }
         }       
 
         public string GetBusNumber(int Id)
@@ -90,20 +111,40 @@ namespace BusTicketing.Controllers
 
         public ActionResult Create()
         {
-            ScheduleViewModel scheduleViewModel = new ScheduleViewModel();
-            scheduleViewModel.BusList = (from p in _repository.Get<Bus>()
-                                           select new SelectListItem
-                                           {
-                                               Value = p.Id.ToString(),
-                                               Text = p.Bus_No
-                                           }).ToList();
-            scheduleViewModel.RouteList = (from p in _repository.Get<Route>()
-                                           select new SelectListItem
-                                           {
-                                               Value = p.Id.ToString(),
-                                               Text = p.Departure + "-" + p.Arrival
-                                           }).ToList();
-            return View(scheduleViewModel);
+            if (userRole == 1)
+            {
+                ScheduleViewModel scheduleViewModel = new ScheduleViewModel();
+                scheduleViewModel.BusList = (from p in _repository.Get<Bus>()
+                                             select new SelectListItem
+                                             {
+                                                 Value = p.Id.ToString(),
+                                                 Text = p.Bus_No
+                                             }).ToList();
+                scheduleViewModel.RouteList = (from p in _repository.Get<Route>()
+                                               select new SelectListItem
+                                               {
+                                                   Value = p.Id.ToString(),
+                                                   Text = p.Departure + "-" + p.Arrival
+                                               }).ToList();
+                return View(scheduleViewModel);
+            }
+            else
+            {
+                ScheduleViewModel scheduleViewModel = new ScheduleViewModel();
+                scheduleViewModel.BusList = (from p in _repository.Get<Bus>().Where(c => c.UserId == currentUserId)
+                                             select new SelectListItem
+                                             {
+                                                 Value = p.Id.ToString(),
+                                                 Text = p.Bus_No
+                                             }).ToList();
+                scheduleViewModel.RouteList = (from p in _repository.Get<Route>().Where(c => c.UserId == currentUserId)
+                                               select new SelectListItem
+                                               {
+                                                   Value = p.Id.ToString(),
+                                                   Text = p.Departure + "-" + p.Arrival
+                                               }).ToList();
+                return View(scheduleViewModel);
+            }
         }
 
         [ValidateAntiForgeryToken]
