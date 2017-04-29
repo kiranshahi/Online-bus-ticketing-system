@@ -68,6 +68,7 @@ namespace BusTicketing.Controllers
         public ActionResult Create()
         {
             TravelViewModel travelViewModel = new TravelViewModel();
+
             return View(travelViewModel);
         }
        
@@ -80,6 +81,7 @@ namespace BusTicketing.Controllers
                 var travel = _mapper.Map<Travel>(travelViewModel);
                 try
                 {
+                    travel.UserId = GlobalUser.getGlobalUser().Id;
                     _repository.Insert<Travel>(travel);
                     _repository.SaveChanges();
 

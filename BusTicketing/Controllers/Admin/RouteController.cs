@@ -98,7 +98,8 @@ namespace BusTicketing.Controllers
             {
                 var route = _mapper.Map<Route>(routeViewModel);
                 try
-                {                    
+                {
+                    route.UserId = GlobalUser.getGlobalUser().Id;
                     _repository.Insert<Route>(route);
                     _repository.SaveChanges();
 

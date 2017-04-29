@@ -24,6 +24,7 @@ namespace Entities.Models.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Travel_Name).HasColumnName("Travel_Name");
             this.Property(t => t.Travel_Detail).HasColumnName("Travel_Detail");
+            this.Property(t => t.UserId).HasColumnName("UserId");
         }
     }
 }

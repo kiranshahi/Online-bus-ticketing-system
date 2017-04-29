@@ -255,8 +255,5 @@ namespace BusTicketing.Controllers
 
             return View(scheduleViewModel);
         }
-
-       
-        
     }
 }

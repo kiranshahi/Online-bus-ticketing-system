@@ -202,7 +202,7 @@ namespace BusTicketing.Controllers
         {
             var bus = _repository.Get<Bus>().Where(c => c.Id == id).FirstOrDefault();
             var busViewModel = _mapper.Map<BusViewModel>(bus);
-            busViewModel.TravelList = (from p in _repository.Get<Travel>()
+            busViewModel.TravelList = (from p in _repository.Get<Travel>().Where(c => c.UserId == userId)
                                        select new SelectListItem
                                        {
                                            Value = p.Id.ToString(),

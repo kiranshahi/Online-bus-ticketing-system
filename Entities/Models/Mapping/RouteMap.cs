@@ -29,6 +29,7 @@ namespace Entities.Models.Mapping
             this.Property(t => t.Arrival).HasColumnName("Arrival");
             this.Property(t => t.Through).HasColumnName("Through");
             this.Property(t => t.Fair).HasColumnName("Fair");
+            this.Property(t => t.UserId).HasColumnName("UserId");
         }
     }
 }
