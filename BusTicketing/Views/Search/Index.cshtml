@@ -62,12 +62,12 @@
                                         {
                                             <tr>
                                                 <th scope="row">@(index + 1)</th>
-                                                <td>@bus.Bus_No</td>
-                                                <td>@bus.Departure</td>
-                                                <td>@bus.NoOfSeats</td>
-                                                <td>@bus.Facilities</td>
-                                                <td>@bus.Fair</td>
-                                                <td>
+                                                <th>@bus.Bus_No</th>
+                                                <th>@bus.Departure</th>
+                                                <th>@bus.NoOfSeats</th>
+                                                <th>@bus.Facilities</th>
+                                                <th>@bus.Fair</th>
+                                                <th>
                                                     @if (!Request.IsAuthenticated)
                                                     {
                                                         <a href="javascript:void(0)" data-toggle="modal" data-target="#custom-width-modal">Book Seat</a>
@@ -76,7 +76,7 @@
                                                     {
                                                         <a href="@Url.Action("Book", "Book", new { id = bus.Id })">Book Seat</a>
                                                     }
-                                                </td>
+                                                </th>
                                             </tr>
                                                     index++;
                                         }

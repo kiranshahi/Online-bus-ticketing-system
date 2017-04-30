@@ -2045,3 +2045,7 @@ body.fixed-left .side-menu.left {
 .panel-body{
   text-align:center;
 }
+
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
