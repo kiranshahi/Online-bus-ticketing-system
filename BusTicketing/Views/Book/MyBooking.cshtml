@@ -45,14 +45,10 @@
                                                 <td>@bus.Fair</td>
                                                 <td>@bus.AmountPaid</td>
                                                 <td>
-<<<<<<< HEAD
                                                     @if (bus.BookedDate > DateTime.Today)
                                                     {
                                                         <a href="@Url.Action("Cancel", "Book", new { id = bus.Id })" class="edit-row" title="Cancel">Cancel</a>   
                                                     }
-=======
-                                                    <a href="@Url.Action("Cancel", "Book", new { id = bus.Id })" class="edit-row" title="Cancel">Cancel</a>
->>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
                                                 </td>
                                             </tr>
                                             index++;
