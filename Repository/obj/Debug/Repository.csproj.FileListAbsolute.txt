@@ -34,15 +34,3 @@ F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\Entity
 F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\obj\Debug\Repository.dll
 F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\obj\Debug\Repository.pdb
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Repository.dll.config
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Repository.dll
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Repository.pdb
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Entities.dll
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\EntityFramework.dll
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Entities.pdb
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\EntityFramework.xml
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\obj\Debug\Repository.dll
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\obj\Debug\Repository.pdb

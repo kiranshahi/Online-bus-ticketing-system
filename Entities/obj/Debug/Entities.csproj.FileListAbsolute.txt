@@ -36,4 +36,3 @@ C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\bin\
 C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\obj\Debug\Entities.dll
 C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\obj\Debug\Entities.pdb
-C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
