@@ -58,5 +58,6 @@ C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Common\bin\De
 C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Common\bin\Debug\System.Web.WebPages.xml
 C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Common\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Common\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Common\obj\Debug\Common.dll
 C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Common\obj\Debug\Common.pdb

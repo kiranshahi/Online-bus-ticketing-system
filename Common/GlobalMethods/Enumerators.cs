@@ -11,7 +11,7 @@ namespace Common.GlobalMethods
         public enum UserRole : int
         {
             Admin = 1,
-            TravelAgency = 2,
+            BusOwner = 2,
             User = 3
         }
     }
