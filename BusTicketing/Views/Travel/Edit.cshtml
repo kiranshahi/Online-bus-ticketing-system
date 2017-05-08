@@ -1,0 +1,53 @@
+﻿@model BusTicketing.Models.TravelViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<link href="~/Content/jq-themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/CustomJavascripts/Common.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Update Travel Agency</h2>
+    </div>
+</div>
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Edit", "Travel", FormMethod.Post, new { id = "frmEdit", enctype = "multipart/form-data" }))
+            {
+                <section class="panel">                    
+                    <div class="panel-body">
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(m => m.Id)
+                        <div class="col-sm-6 col-md-6">
+                            <fieldset>
+                                <legend>Travel Agency Information</legend>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Travel_Name)
+                                    @Html.TextBoxFor(m => m.Travel_Name, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Travel_Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Travel_Detail)
+                                    @Html.TextAreaFor(m => m.Travel_Detail, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Travel_Detail, "", new { @class = "text-danger" })
+                                </div>    
+                            </fieldset>
+                        </div>
+                    </div>
+                    <footer class="panel-footer">
+                        <button id="btnCreate" type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> Update</button>
+                    </footer>
+                </section>
+
+            }
+
+        </div>
+    </div>
+</div>

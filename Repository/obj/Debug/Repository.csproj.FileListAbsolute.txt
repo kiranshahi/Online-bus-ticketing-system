@@ -1,0 +1,48 @@
+E:\Bishnu Chaudhary\LMS\Repository\bin\Debug\Repository.dll.config
+E:\Bishnu Chaudhary\LMS\Repository\bin\Debug\Repository.dll
+E:\Bishnu Chaudhary\LMS\Repository\bin\Debug\Repository.pdb
+E:\Bishnu Chaudhary\LMS\Repository\bin\Debug\Entities.dll
+E:\Bishnu Chaudhary\LMS\Repository\bin\Debug\EntityFramework.dll
+E:\Bishnu Chaudhary\LMS\Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Bishnu Chaudhary\LMS\Repository\bin\Debug\Entities.pdb
+E:\Bishnu Chaudhary\LMS\Repository\bin\Debug\EntityFramework.xml
+E:\Bishnu Chaudhary\LMS\Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\Bishnu Chaudhary\LMS\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+E:\Bishnu Chaudhary\LMS\Repository\obj\Debug\Repository.dll
+E:\Bishnu Chaudhary\LMS\Repository\obj\Debug\Repository.pdb
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\bin\Debug\Repository.dll.config
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\bin\Debug\Repository.dll
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\bin\Debug\Repository.pdb
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\bin\Debug\Entities.dll
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\bin\Debug\EntityFramework.dll
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\bin\Debug\EntityFramework.SqlServer.dll
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\bin\Debug\Entities.pdb
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\bin\Debug\EntityFramework.xml
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\bin\Debug\EntityFramework.SqlServer.xml
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\obj\Debug\Repository.dll
+F:\Files\Bishnu\Projects\CollegeProject\LMS\Repository\obj\Debug\Repository.pdb
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\Repository.dll.config
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\Repository.dll
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\Repository.pdb
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\Entities.dll
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\EntityFramework.dll
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\EntityFramework.SqlServer.dll
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\Entities.pdb
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\EntityFramework.xml
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\bin\Debug\EntityFramework.SqlServer.xml
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\obj\Debug\Repository.dll
+F:\Files\Bishnu\Projects\CollegeProject\BusTicketing\Repository\obj\Debug\Repository.pdb
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Repository.dll.config
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Repository.dll
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Repository.pdb
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Entities.dll
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\EntityFramework.dll
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\Entities.pdb
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\EntityFramework.xml
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\obj\Debug\Repository.dll
+C:\Users\kirans\Documents\Visual Studio 2013\Projects\BusTicketing\Repository\obj\Debug\Repository.pdb

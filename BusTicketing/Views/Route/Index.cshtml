@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BusTicketing.Models.RouteViewModel>
+@{
+    ViewBag.Title = "Route List";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="btn-group pull-right m-t-15">
+            <a href="@Url.Action("Create","Route")" class="btn btn-default waves-effect waves-light" id="target" title="Create"><i class="fa fa-plus"></i> Add Route</a>
+        </div>
+        <h2>Route List</h2>
+    </div>
+</div>
+<link href="~/Scripts/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="">
+                    <table id="datatable" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Departure</th>
+                                <th>Arrival</th>
+                                <th>Through</th>
+                                <th>Fair</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var route in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @route.Departure
+                                    </td>
+                                    <td>@route.Arrival</td>
+                                    <td>@route.Through</td>
+                                    <td>@route.Fair</td>
+
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Route", new { id = route.Id })" c class="edit-row" title="Edit"><i class="fa fa-pencil"></i></a>
+                                        <a href="@Url.Action("Delete", "Route", new { id = route.Id })" c class="delete-row" title="Delete"><i class="fa fa-remove"></i></a>
+
+                                       
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#datatable').dataTable();
+    });
+</script>

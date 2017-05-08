@@ -1,0 +1,105 @@
+﻿@model BusTicketing.Models.SearchViewModel
+@{
+    ViewBag.Title = "Search Result";
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+}
+
+
+<link href="~/Content/jq-themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/CustomJavascripts/Common.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box" style="border:none;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel" style="border:1px solid #FBF5D6;">
+                        <header class="panel-heading" style="padding:0;">
+                            <div class="col-sm-12" style="background:#FBF5D6; padding:20px;">
+                                @using (Html.BeginForm("SearchBus", "Search", FormMethod.Post, new { id = "frmcreate", @class = "form-inline", enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="form-group m-r-10">
+                                        <label for="exampleInputName2">From Address</label>
+                                        @Html.TextBoxFor(m => m.FromAddress, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.FromAddress, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group m-r-10">
+                                        <label for="exampleInputEmail2">To Address</label>
+                                        @Html.TextBoxFor(m => m.ToAddress, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.ToAddress, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group m-r-10">
+                                        <label for="exampleInputEmail2">Travel Date</label>
+                                        @Html.TextBoxFor(m => m.TravelDate, "{0:MM/dd/yyyy}", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.TravelDate, "", new { @class = "text-danger" })
+                                    </div>
+                                    <button type="submit" class="btn btn-default waves-effect waves-light btn-md">
+                                        Search
+                                    </button>
+                                }
+                            </div>
+                        </header>
+                        <div class="panel-body">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th>S. No.</th>
+                                        <th>Bus</th>
+                                        <th>Departure</th>
+                                        <th>Seats</th>
+                                        <th>Facilities</th>
+                                        <th>Fare</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        var index = 0;
+                                        foreach (var bus in Model.BusList)
+                                        {
+                                            <tr>
+                                                <th scope="row">@(index + 1)</th>
+                                                <th>@bus.Bus_No</th>
+                                                <th>@bus.Departure</th>
+                                                <th>@bus.NoOfSeats</th>
+                                                <th>@bus.Facilities</th>
+                                                <th>@bus.Fair</th>
+                                                <th>
+                                                    @if (!Request.IsAuthenticated)
+                                                    {
+                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#custom-width-modal">Book Seat</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="@Url.Action("Book", "Book", new { id = bus.Id })">Book Seat</a>
+                                                    }
+                                                </th>
+                                            </tr>
+                                                    index++;
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    $(document).ready(function (e) {
+        $('#TravelDate').datepicker({
+            dateFormat: 'mm/dd/yy',
+            startDate: new Date(),
+            minDate: today
+        });
+    });
+</script>

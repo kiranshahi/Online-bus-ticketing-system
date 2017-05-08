@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BusTicketing.Models.BookSeatViewModel>
+@{
+    ViewBag.Title = "My Booking";
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box" style="border:none;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel" style="border:1px solid #FBF5D6;">
+                        <header class="panel-heading" style="padding:0;">
+                            <h2 class="panel-title" style="background: #FBF5D6; padding: 20px 10px;">My Booking</h2>
+                        </header>
+                        <div class="panel-body">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th>S. No.</th>
+                                        <th>Bus</th>
+                                        <th>Departure</th>
+                                        <th>Booked Seats</th>
+                                        <th>Booked Date</th>
+                                        <th>Facilities</th>
+                                        <th>Fare</th>
+                                        <th>Amount Paid</th>
+                                        <th>Cancel Ticket</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        var index = 0;
+                                        foreach (var bus in Model)
+                                        {
+                                            <tr>
+                                                <th scope="row">@(index + 1)</th>
+                                                <td>@bus.Bus_No</td>
+                                                <td>@bus.Departure</td>
+                                                <td>@bus.BookedSeat</td>
+                                                <td>@bus.BookedDate.ToShortDateString()</td>
+                                                <td>@bus.Facilities</td>
+                                                <td>@bus.Fair</td>
+                                                <td>@bus.AmountPaid</td>
+                                                <td>
+                                                    @if (bus.BookedDate > DateTime.Today)
+                                                    {
+                                                        <a href="@Url.Action("Cancel", "Book", new { id = bus.Id })" class="edit-row" title="Cancel">Cancel</a>   
+                                                    }
+                                                </td>
+                                            </tr>
+                                            index++;
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

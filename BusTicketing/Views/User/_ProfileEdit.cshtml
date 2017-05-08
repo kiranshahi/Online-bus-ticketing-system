@@ -1,0 +1,96 @@
+﻿@model BusTicketing.Models.UserProfileViewModel
+<div class="row">
+    @using (Html.BeginForm("ProfileEdit", "User", FormMethod.Post, new { id = "frmedit", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(m => m.User_Id)
+        @Html.HiddenFor(m => m.Username)
+
+        <div class="col-sm-10 col-md-10">
+            <fieldset>
+                <legend>General Information</legend>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.First_name)
+                    @Html.TextBoxFor(m => m.First_name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.First_name, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Last_name)
+                    @Html.TextBoxFor(m => m.Last_name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Last_name, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DOB)
+                    @Html.TextBoxFor(m => m.DOB, "{0:MM/dd/yyyy}",new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Contact Information</legend>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address)
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Contact)
+                    @Html.TextBoxFor(m => m.Contact, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Contact, "", new { @class = "text-danger" })
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Profile Image</legend>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.ProfileImageUpload, new { @Type = "file", @accept = "image/gif, image/jpeg,image/png" })
+                    @Html.ValidationMessageFor(m => m.ProfileImageUpload, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <img id="imgProfileImage" style="height:100px;width:100px;" src="@Url.Action("GetUserImage", "User", new { id = Model.User_Id })" />
+                </div>
+            </fieldset>
+
+        </div>
+        
+        <div class="col-md-12">
+            <div class="panel-button">
+                <button id="btnSave" type="button" class="btn btn-primary"><i class="fa fa-edit"></i> Update</button>
+            </div>
+        </div>
+    }
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $("#ProfileImageUpload").change(function () {
+            readURL(this, $('#imgProfileImage'));
+        });
+
+        $('#DOB').datepicker({
+            dateFormat: 'mm/dd/yy'
+        });
+
+        $(document).on("click", "#btnSave", function (e) {
+            if ($("#frmedit").valid()) {
+                var formData = new FormData($("#frmedit")[0]);
+                var url = "../User/ProfileEdit";
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: formData,
+                    success: function (data) {
+                        var result = JSON.parse(data);
+                        window.location.reload(true);
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+            }
+        });
+    });
+</script>
+<script src="~/Scripts/CustomJavascripts/Common.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

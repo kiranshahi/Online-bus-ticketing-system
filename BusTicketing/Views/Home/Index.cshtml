@@ -1,0 +1,123 @@
+﻿@model BusTicketing.Models.SearchViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+}
+
+
+<link href="~/Content/jq-themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/CustomJavascripts/Common.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<link href="~/Content/plugins/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/plugins/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Content/plugins/owl.carousel/dist/owl.carousel.min.js"></script>
+<style>
+    .carousel-caption {
+        top: 20px !important;
+    }
+</style>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START carousel-->
+            @{
+                Html.RenderAction("LoadSlider", "LoadPartial");
+            }
+            <!-- END carousel-->
+        </div>
+    </div>
+<div class="row">
+    <div class="col-sm-12">
+        @using (Html.BeginForm("SearchBus", "Search", FormMethod.Post, new { id = "frmcreate", enctype = "multipart/form-data", @class = "form-inline" }))
+        {
+            <section class="panel" style="border:1px solid #FBF5D6;">
+                <header class="panel-heading" style="padding:0;">
+                    <h1 class="panel-title text-center">Online Bus Ticket Booking with Zero Booking Fees</h1>
+                </header>
+                <div class="panel-body">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="col-sm-12 col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FromAddress)
+                            @Html.TextBoxFor(m => m.FromAddress, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FromAddress, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ToAddress)
+                            @Html.TextBoxFor(m => m.ToAddress, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ToAddress, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.TravelDate)
+                            @Html.TextBoxFor(m => m.TravelDate, "{0:MM/dd/yyyy}", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.TravelDate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <button id="btnCreate" type="submit" class="btn btn-default btn-block text-uppercase waves-effect waves-light">Search Buses</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        }
+
+    </div>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="text-center"><h2>We promise to deliver</h2></div>
+
+        <div class="col-xs-12 col-md-4">
+            <div class="thumbnail">
+                <img src="~/Content/Images/maximum_choices.png" alt="MAXIMUM CHOICE" />
+                <div class="caption text-center">
+                    <h3>MAXIMUM CHOICE</h3>
+                    <p>We give you the widest number of travel options across thousands of routes. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+            <div class="thumbnail">
+                <img src="~/Content/Images/benefits.png" alt="SUPERIOR CUSTOMER SERVICE" />
+                <div class="caption text-center">
+                    <h3>SUPERIOR CUSTOMER SERVICE</h3>
+                    <p> We put our experience and relationships to good use and are available to solve your travel issues. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+            <div class="thumbnail">
+                <img src="~/Content/Images/lowest_Fare.png" alt="LOWEST PRICES" />
+                <div class="caption text-center">
+                    <h3>LOWEST PRICES</h3>
+                    <p> We always give you the lowest price with the best partner offers. </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    $(document).ready(function (e) {
+        $('#TravelDate').datepicker({
+            dateFormat: 'mm/dd/yy',
+            startDate: new Date(),
+            minDate: today
+        });
+    });
+</script>

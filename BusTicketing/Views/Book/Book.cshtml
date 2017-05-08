@@ -1,0 +1,113 @@
+﻿@model BusTicketing.Models.BookSeatViewModel
+@{
+    ViewBag.Title = "Book";
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+}
+
+<style>
+    .text-muted {
+        display: inline-block;
+    }
+</style>
+
+<link href="~/Content/jq-themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/CustomJavascripts/Common.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="wraper container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="@Model.BusImage" alt="profile-image" width="100%" height="350px">
+            <h4 class="m-b-5"><b>@Model.TravelName</b></h4>
+        </div>
+        <div class="col-md-4">
+            <div class="card-box m-t-20">
+                @using (Html.BeginForm("Book", "Book", FormMethod.Post, new { id = "frmcreate", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(c => c.ScheduleId)
+                    @Html.HiddenFor(c => c.Bus_No)
+                    @Html.HiddenFor(c => c.NoOfSeats)
+                    @Html.HiddenFor(c => c.TravelName)
+                    @Html.HiddenFor(c => c.Facilities)
+                    @Html.HiddenFor(c => c.Departure)
+                    @Html.HiddenFor(c => c.Fair)
+                    @Html.HiddenFor(c => c.BusImage)
+                    @Html.HiddenFor(c => c.BookedSeat)
+
+                    <h4 class="m-t-0 header-title"><b>Bus Information</b></h4>
+                    <div class="p-20">
+                        <div>
+                            <strong>Travel:</strong>
+                            <p class="text-muted">@Model.TravelName</p>
+                        </div>
+                        <div>
+                            <strong>Bus No.:</strong>
+                            <p class="text-muted">@Model.Bus_No</p>
+                        </div>
+                        <div>
+                            <strong>Departure:</strong>
+                            <p class="text-muted">@Model.Departure</p>
+                        </div>
+                        <div>
+                            <strong>Seat:</strong>
+                            <p class="text-muted">@Model.NoOfSeats</p>
+                        </div>
+                        <div>
+                            <strong>Fare:</strong>
+                            <p class="text-muted">@Model.Fair</p>
+                        </div>
+                        <div>
+                            <strong>Facility:</strong>
+                            <p class="text-muted">@Model.Facilities</p>
+                        </div>
+                        <div>
+                            <strong>Booked Seat:</strong>
+                            <p class="text-muted">@Model.BookedSeat</p>
+                        </div>
+                        <div>
+                            <strong>Available Seat:</strong>
+                            <div>
+                                @Html.ListBoxFor(m => m.SelectedSeat, Model.AvailableSeat, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div style="margin-top:5px;">
+                            <button type="submit" class="btn btn-default waves-effect waves-light btn-md">
+                                Continue Booking
+                            </button>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-box m-t-20">
+                <div>
+                    <strong>Selected Seat:</strong>
+                    <p class="text-muted" id="selectedSeatDisplay"></p>
+                </div>
+            </div>
+            <div class="card-box m-t-20" style="background:#e9e2e2">
+
+                <div style="width:100%; height:100px;text-align: right;font-size: 35px;padding: 20px 0;">
+                    Nrs. <span id="amount">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function (e) {
+        $("#SelectedSeat").change(function (e) {
+            var selectedSeat = $(this).val().join(", ");
+            var fair = parseFloat('@Model.Fair');
+            var noOfSeat = parseFloat($('option:selected').length);
+            $("#selectedSeatDisplay").html(selectedSeat);
+            $("#amount").html(fair * noOfSeat);
+        });
+    });
+</script>

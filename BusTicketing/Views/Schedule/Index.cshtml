@@ -1,0 +1,69 @@
+﻿@model List<BusTicketing.Models.ScheduleViewModel>
+@{
+    ViewBag.Title = "Schedule Bus";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="btn-group pull-right m-t-15">
+            <a href="@Url.Action("Create","Schedule")" class="btn btn-default waves-effect waves-light" id="target" title="Create"><i class="fa fa-plus"></i> Schedule Bus</a>
+        </div>
+        <h2>Scheduled Bus List</h2>
+    </div>
+</div>
+<link href="~/Scripts/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="">
+                    <table id="datatable" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Bus No.</th>
+                                <th>Route</th>
+                                <th>Date</th>
+                                <th>Departure Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var schedule in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @schedule.BusName
+                                    </td>
+                                    <td>@schedule.Route</td>
+                                    <td>@schedule.Date.Value.ToShortDateString()</td>
+                                    <td>@schedule.DepartureTime</td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Schedule", new { id = schedule.Id })" c class="edit-row" title="Edit"><i class="fa fa-pencil"></i></a>
+                                        <a href="@Url.Action("Delete", "Schedule", new { id = schedule.Id })" c class="delete-row" title="Delete"><i class="fa fa-remove"></i></a>
+
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#datatable').dataTable();
+    });
+</script>
+
