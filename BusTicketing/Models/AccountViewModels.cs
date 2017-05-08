@@ -50,7 +50,11 @@ namespace BusTicketing.Models
     public class LoginViewModel
     {
         [Required]
+<<<<<<< HEAD
         [Display(Name = "Username")]
+=======
+        [Display(Name = "User name")]
+>>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
         public string UserName { get; set; }
 
         [Required]
@@ -81,7 +85,10 @@ namespace BusTicketing.Models
         [Display(Name = "Last Name")]
         public string Last_name { get; set; }
         [Required]
+<<<<<<< HEAD
         [Display(Name = "Date of birth")]
+=======
+>>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
         public Nullable<System.DateTime> DOB { get; set; }
         [Required]
         public string Address { get; set; }

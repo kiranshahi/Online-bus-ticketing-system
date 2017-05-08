@@ -75,6 +75,7 @@ namespace BusTicketing.Controllers
                 var apiKey = ConfigurationManager.AppSettings["MultiSafepayAPIKey"];
                 var client = new MultiSafepayClient(apiKey, url);
                 var orderRequest = OrderRequest.CreateRedirect(payment.PaymentId, bookseat.Seats, Convert.ToInt32(payment.PaidAmount), "EUR", new PaymentOptions("http://localhost:1297/Book/Notify", "http://localhost:1297/Book/Success", "http://localhost:1297/Book/Failed"));
+<<<<<<< HEAD
                 try
                 {
                     var result = client.CreateOrder(orderRequest);
@@ -85,6 +86,11 @@ namespace BusTicketing.Controllers
                     TempData["Success"] = "Booking Failed!!";
                     TempData["isSuccess"] = "false";
                 }
+=======
+
+                var result = client.CreateOrder(orderRequest);
+                return Redirect(result.PaymentUrl.ToString());
+>>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
             }
             return View(vmbookseat);
         }

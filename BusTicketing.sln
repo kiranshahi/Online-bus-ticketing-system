@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+<<<<<<< HEAD
 VisualStudioVersion = 12.0.21005.1
+=======
+VisualStudioVersion = 12.0.40629.0
+>>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusTicketing", "BusTicketing\BusTicketing.csproj", "{86921D0D-95EC-4BE7-9DB8-06F0036733C0}"
 EndProject

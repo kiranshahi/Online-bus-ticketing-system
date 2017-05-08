@@ -23,7 +23,10 @@ namespace BusTicketing.Controllers
         private IRepositoryFactory _repository;
         private IMapper _mapper;
         private int userId = GlobalUser.getGlobalUser().Id;
+<<<<<<< HEAD
         private int userRole = GlobalUser.getGlobalUser().UserType;
+=======
+>>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
         public TravelController(IRepositoryFactory repository, IMapper mapper)
         {
             _repository = repository;
@@ -106,6 +109,7 @@ namespace BusTicketing.Controllers
        
         public ActionResult Edit(int id)
         {
+<<<<<<< HEAD
             if (userRole == 1)
             {
                 var travel = _repository.Get<Travel>().Where(c => c.Id == id).FirstOrDefault();
@@ -118,6 +122,11 @@ namespace BusTicketing.Controllers
                 var travelViewModel = _mapper.Map<TravelViewModel>(travel);
                 return View(travelViewModel);
             }
+=======
+            var travel = _repository.Get<Travel>().Where(c => c.Id == id && c.UserId == userId).FirstOrDefault();
+            var travelViewModel = _mapper.Map<TravelViewModel>(travel);
+            return View(travelViewModel);
+>>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
         }
         
         [ValidateAntiForgeryToken]

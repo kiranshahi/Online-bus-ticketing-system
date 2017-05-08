@@ -73,7 +73,11 @@ namespace BusTicketing.Controllers
                 TempData["isSuccess"] = "true";
 
             }
+<<<<<<< HEAD
             catch (Exception e)
+=======
+            catch
+>>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
             {
                 TempData["Success"] = "Delete Failed!!";
                 TempData["isSuccess"] = "false";

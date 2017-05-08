@@ -78,9 +78,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+=======
+    <None Include="packages.config" />
+>>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">

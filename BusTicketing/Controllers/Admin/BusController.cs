@@ -200,6 +200,7 @@ namespace BusTicketing.Controllers
 
         public ActionResult Edit(int id)
         {
+<<<<<<< HEAD
             if (userRole == 1)
             {
                 var bus = _repository.Get<Bus>().Where(c => c.Id == id).FirstOrDefault();
@@ -224,6 +225,17 @@ namespace BusTicketing.Controllers
                                            }).ToList();
                 return View(busViewModel);
             }
+=======
+            var bus = _repository.Get<Bus>().Where(c => c.Id == id).FirstOrDefault();
+            var busViewModel = _mapper.Map<BusViewModel>(bus);
+            busViewModel.TravelList = (from p in _repository.Get<Travel>().Where(c => c.UserId == userId)
+                                       select new SelectListItem
+                                       {
+                                           Value = p.Id.ToString(),
+                                           Text = p.Travel_Name
+                                       }).ToList();
+            return View(busViewModel);
+>>>>>>> 26ef721075f7daf65910c438cea0051f4b8a7e75
         }
 
         [ValidateAntiForgeryToken]
